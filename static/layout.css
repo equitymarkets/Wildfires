@@ -1,0 +1,212 @@
+/*            
+                 FFF     JJJJ      AAAA    KK    KK   PPPP      DDD
+               FF   FF   JJ  JJ   A    A   KK    KK   PP  PP   DD  DD    
+               FF        JJ JJ    A    A   KK    KK   PP  PP       DD    
+               FF  FFF   JJJJ     A    A   KK    KK   PPPP       DDD
+               FF    F   J  JJ    A    A   KK    KK   PP        DD       
+                 FFFF    J   JJ    AAAA     KKKKKK    PP       DDDDDD  
+
+----------------------------------------------------------------------------------------
+|  Fiona          |  José           |   Andrew   |   Katie    |   Pratik  |   Derek    |
+|  Blackmon-Burns |  Melvin-Calleja |   Herr     |   Borlie   |   Shah    |   Price    |
+----------------------------------------------------------------------------------------
+|                        (In Memory of Christian Schimelfenig)                         |
+----------------------------------------------------------------------------------------
+
+C C   WW      W      WW  IIIII  LL      DDD    FFFFF  IIIII  RRRR    EEEEE   SSSS   C  C
+C C    WW    W W    WW     I    LL      D  D   F        I    RR RR   E      SS      C  C
+        WW  W   W  WW      I    LL      D  D   FFF      I    RRRR    EEE     SSS
+         WWW     WWW       I    LL      D  D   F        I    R  R    E         SS
+          W       W      IIIII  LLLLL   DDD    F      IIIII  R   R   EEEEE  SSSS
+*/
+
+/*  Our CSS file provides style to the html document by selecting elements to change. */
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #E7EFE9;
+}
+
+.row {
+    border-radius: 25px;
+}
+
+html, body {
+    height: 100%;
+}
+
+.row .js-plotly-plot .plotly {
+    border-radius: 25px; 
+}
+
+.main-svg {
+    border-radius: 25px;
+}
+
+ #map, #map2 { 
+    width: 45%;
+    height: 90%;
+    margin: 2vw;
+    border-radius: 25px;
+    display: inline-block;
+}
+
+#map-grid {
+    height: 60vh;
+    text-align: center;
+}
+
+.info { 
+    padding: 6px 8px; 
+    font: 14px/16px Arial, Helvetica, sans-serif; 
+    background: white; 
+    background: rgba(255,255,255,0.8); 
+    box-shadow: 0 0 15px rgba(0,0,0,0.2); 
+    border-radius: 5px; 
+} 
+
+.info h4 { 
+    margin: 0 0 5px; 
+    color: #777; 
+}
+
+.legend { 
+    text-align: left; 
+    line-height: 18px; 
+    color: #555; 
+}
+
+.legend i { 
+    width: 18px; 
+    height: 18px; 
+    float: left; 
+    margin-right: 8px; 
+    opacity: 0.7; 
+}
+
+#selDataset, #selDataset2, #selDataset3 {
+    height: 4%;
+    border-radius: 25px; 
+    background-color: #fefae0;
+    margin: .5% 0% .5% 5%;
+}
+
+header {
+    background-color: #606c38;
+    color: #ffffff;
+    margin: auto;
+    position: relative;
+    display: grid;
+    height: 30%;
+    width: auto;
+    text-align: center;
+    border-radius: 3px;
+    align-items: center;
+}
+
+header::before {
+    opacity: .35;
+    content: "";
+    background-image: url('smokey_bear.jpeg');
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
+
+#header-text {
+    font-size: 3.8em;
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.grid-box {
+    display: grid;
+    grid-gap: 1vw;
+    object-fit: fill;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto; 
+  }
+
+.grid-box img {
+    width: 92%;
+    margin-left: 3%;
+    margin-right: 3%;
+    height: auto;
+    border-radius: 25px;
+    object-fit: cover;
+} 
+
+@media only screen and (max-width: 1000px) {
+    .grid-box {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+    }
+
+    #map, #map2 { 
+    
+        width: 90%;
+        height: 90%;
+        margin: 2vw;
+        border-radius: 25px;
+    }
+    #map-grid {
+        height: 45vh;
+        text-align: center;
+    }
+    .buffer {
+        height: 50%;
+        width: 100%
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .grid-box { 
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+}
+
+
+nav, footer {
+    background-color: #283618;
+    width: 100%;
+    color: #ffffff;
+}
+
+.dropdown { 
+    background-color: #283618;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: Georgia, serif;  
+} 
+
+nav ul li {
+    float: left;
+} 
+
+nav ul li a, footer ul li a {
+    display: block;
+    padding: 8px;
+    color: #ffffff; 
+    text-decoration: none;
+}
+
+nav ul li a:hover, footer ul li a:hover {
+    color: #dda15e;
+}
+
+footer {
+    font-family: Georgia, serif;
+    padding-top: 10px;
+    padding-bottom: 10px;
+} 

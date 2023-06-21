@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<!-- index.html is the main page for our frontend and the page in which we display our data. Semantic elements
+have been used wherever possible.  -->
+<html lang="en">
+
+  <head>
+    <!-- <head> defines our meta data and external CSS files  -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Project 3 - Wildfires</title>
+    <link rel="shortcut icon"
+        href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin="" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='../static/layout.css') }}">   
+  
+  </head>
+
+  <body>
+    <!-- <body> defines the part of our website that users see -->
+    <header>
+      <h1 id="header-text">Wildfires in the US</h1>
+    </header> 
+    
+    <nav>
+      <ul>
+        <strong>
+        <li><a href="#bar">Total Acreage Burned</a></li>
+        <li><a href="#scatter">Fires By State</a></li>
+        <li><a href="#pie">Causes of Wildfires</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#map">Fire Map</a></li>
+        <li><a href="#map2">Population Map</a></li>
+        <li><a href="#references">References</a></li>
+        </strong>
+      </ul>
+    </nav>
+
+    <section class="row" id="barchart">        
+      <figure id="bar"> </figure>
+      <div class = "dropdown">
+        <select id="selDataset2" onchange="getData2(this.value)">
+          <option value="2020">2020</option>
+          <option value="2019">2019</option>
+          <option value="2018">2018</option>
+          <option value="2017">2017</option>
+          <option value="2016">2016</option>
+          <option value="acre">All Years</option>
+        </select>
+      </div> 
+      </figure>
+    </section>
+
+    <section class="row" id="linechart">
+      <figure id="scatter"></figure>
+      <div class = "dropdown">
+        <select id="selDataset" onchange="getData(this.value)">
+          <option value="ca">California</option>
+          <option value="ak">Alaska</option>
+          <option value="id">Idaho</option>
+          <option value="tx">Texas</option>
+          <option value="nv">Nevada</option>
+          <option value="or">Oregon</option>
+          <option value="mt">Montana</option>
+          <option value="az">Arizona</option>
+          <option value="nm">New Mexico</option>
+          <option value="wa">Washington</option>
+          <option value="total">United States</option>
+        </select> 
+      </div>
+    </section> 
+
+    <div class="row" id="piechart">
+      <figure id="pie"></figure>
+      <div class = "dropdown">
+        <select id="selDataset3" onchange="getData3(this.value)"> 
+          <option value="2020">2020</option>
+          <option value="2019">2019</option>
+          <option value="2018">2018</option>
+          <option value="2017">2017</option>
+          <option value="2016">2016</option>
+          <option value="2015">2015</option>
+          <option value="fire_cause">All Years</option>
+        </select> 
+      </div>
+    </div>
+
+    <br>
+  
+    <summary class="grid-box" id="gallery">
+      <img src="{{url_for('static', filename='fire_size_cause.png')}}" width="100%" height="100%">
+      <img src="{{url_for('static', filename='fire_count_cause.png')}}" width="100%" height="100%">
+      <img src="{{url_for('static', filename='fire_count.png')}}" width="100%" height="100%">
+      <img src="{{url_for('static', filename='sizes.png')}}" width="100%" height="100%">
+    </summary> 
+
+    <br>
+
+    <div id ="map-grid">
+      <div id="map"></div>
+      <div id="map2"></div>
+    </div>
+    
+    <br>
+
+    <div class="buffer"></div>
+    
+    <footer id="references"><h4>Data Sources:</h4>
+      <ul>
+        <li>
+          <a href="https://www.census.gov/data/tables/time-series/dec/density-data-text.html">Historical Population Density Data (1910-2020)</a>
+        </li>
+        <li>
+          <a href="https://www.kaggle.com/datasets/behroozsohrabi/us-wildfire-records-6th-edition">Project Dataset - 2.3 Million US Wildfires((1992-2020))</a>
+        </li>
+        <li>
+          <a href="https://www.npr.org/2023/04/12/1169471568/wildfires-are-bigger-arctic-ice-is-melting-now-scientists-say-theyre-linked">NPR - Wildfires are bigger. Arctic ice is melting. Now, scientists say they're linked : Short Wave</a>
+        </li>
+        <li>
+          <a href="https://www.nature.org/en-us/what-we-do/our-priorities/protect-water-and-land/land-and-water-stories/longleaf-pine-restoration/">The Longleaf Pine</a>
+        </li>
+        <li>
+          <a href="https://wfca.com/articles/what-causes-wildfires/?gclid=CjwKCAjw0ZiiBhBKEiwA4PT9z8dFK3tNWDmkAs6JNVatK31HVNVUnE0RhSPb1d-GXy4Uw0Db4Q_O7xoCN0UQAvD_BwE">What Causes Wildfires?</a>
+        </li>
+      </ul>
+    </footer>
+    
+    <!-- Our Javascript files are used to make various chart and map data -->
+    <script src="static/js/heatmap.js"></script>
+
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+      integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+      crossorigin=""></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="static/js/leaflet-heatmap.js"></script>
+    
+    <script src="static/js/pop_dense_data.js"></script>
+    <script src="static/js/pop_dense_chg_chloro.js"></script>
+    <script src="static/js/app_heat.js"></script>
+    <script src="static/js/app_years.js"></script>
+    <script src="static/js/app_states.js"></script>
+    <script src="static/js/app_cause.js"></script>
+
+  </body>
+
+</html>
