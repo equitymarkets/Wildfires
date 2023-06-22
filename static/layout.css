@@ -1,31 +1,19 @@
-/*            
-                 FFF     JJJJ      AAAA    KK    KK   PPPP      DDD
-               FF   FF   JJ  JJ   A    A   KK    KK   PP  PP   DD  DD    
-               FF        JJ JJ    A    A   KK    KK   PP  PP       DD    
-               FF  FFF   JJJJ     A    A   KK    KK   PPPP       DDD
-               FF    F   J  JJ    A    A   KK    KK   PP        DD       
-                 FFFF    J   JJ    AAAA     KKKKKK    PP       DDDDDD  
-
-----------------------------------------------------------------------------------------
-|  Fiona          |  José           |   Andrew   |   Katie    |   Pratik  |   Derek    |
-|  Blackmon-Burns |  Melvin-Calleja |   Herr     |   Borlie   |   Shah    |   Price    |
-----------------------------------------------------------------------------------------
-|                        (In Memory of Christian Schimelfenig)                         |
-----------------------------------------------------------------------------------------
-
+/*
 C C   WW      W      WW  IIIII  LL      DDD    FFFFF  IIIII  RRRR    EEEEE   SSSS   C  C
 C C    WW    W W    WW     I    LL      D  D   F        I    RR RR   E      SS      C  C
         WW  W   W  WW      I    LL      D  D   FFF      I    RRRR    EEE     SSS
          WWW     WWW       I    LL      D  D   F        I    R  R    E         SS
           W       W      IIIII  LLLLL   DDD    F      IIIII  R   R   EEEEE  SSSS
 */
+/*
 
-/*  Our CSS file provides style to the html document by selecting elements to change. */
-
+*/
 body {
     margin: 0;
     padding: 0;
-    background-color: #E7EFE9;
+    /* background-color: #E7EFE9; */
+    background-color: #B5A4A0;
+    
 }
 
 .row {
@@ -173,13 +161,15 @@ header::before {
 
 
 nav, footer {
-    background-color: #283618;
+    /* background-color: #283618; */
+    background-color: #9a031e;
     width: 100%;
     color: #ffffff;
 }
 
 .dropdown { 
-    background-color: #283618;
+    /* background-color: #283618; */
+    background-color: #9a031e;
 }
 
 nav ul {

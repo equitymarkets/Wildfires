@@ -14,8 +14,18 @@ have been used wherever possible.  -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
     integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
     crossorigin="" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='../static/layout.css') }}">   
-  
+    <link rel="stylesheet" href="{{ url_for('static', filename='../static/layout.css') }}"> 
+    <style>
+      .navbar {
+        z-index: 9999;
+      } 
+      /* Add a sticky class to the navbar when you reach its scroll position */
+      .sticky {
+          position: fixed;
+          top: 0;
+          width: 100%;
+      }
+    </style>    
   </head>
 
   <body>
@@ -24,13 +34,14 @@ have been used wherever possible.  -->
       <h1 id="header-text">Wildfires in the US</h1>
     </header> 
     
-    <nav>
+    <nav class="navbar" id="top-nav">
       <ul>
         <strong>
         <li><a href="#bar">Total Acreage Burned</a></li>
         <li><a href="#scatter">Fires By State</a></li>
         <li><a href="#pie">Causes of Wildfires</a></li>
         <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#jupyter-frame">Notebook</a></li>
         <li><a href="#map">Fire Map</a></li>
         <li><a href="#map2">Population Map</a></li>
         <li><a href="#references">References</a></li>
@@ -50,7 +61,7 @@ have been used wherever possible.  -->
           <option value="acre">All Years</option>
         </select>
       </div> 
-      </figure>
+      
     </section>
 
     <section class="row" id="linechart">
@@ -95,6 +106,13 @@ have been used wherever possible.  -->
       <img src="{{url_for('static', filename='fire_count.png')}}" width="100%" height="100%">
       <img src="{{url_for('static', filename='sizes.png')}}" width="100%" height="100%">
     </summary> 
+    <br>
+
+    <iframe id="jupyter-frame"
+      src="https://equitymarkets.github.io/notebook/lab/index.html"
+      width="100%"
+      height="500px">
+    </iframe>
 
     <br>
 
@@ -143,7 +161,18 @@ have been used wherever possible.  -->
     <script src="static/js/app_years.js"></script>
     <script src="static/js/app_states.js"></script>
     <script src="static/js/app_cause.js"></script>
-
+    <script>
+      window.onscroll = function() {stickyNavbar()};
+      var navbar = document.getElementById("top-nav");
+      var sticky = navbar.offsetTop;
+      function stickyNavbar() {
+        if (window.pageYOffset >= sticky) {
+        navbar.classList.add("sticky");
+        } else {
+        navbar.classList.remove("sticky");
+        }
+      }
+    </script>
   </body>
 
 </html>
