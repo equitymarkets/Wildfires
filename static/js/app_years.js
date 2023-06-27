@@ -13,7 +13,7 @@ d3.json(defaultURL).then(function(line) {
         mode: 'lines',
         name: 'Total Fires',
         line: {
-          color: 'blue',
+          color: '#078B47',
           width: 5
         }
       };
@@ -26,7 +26,7 @@ d3.json(defaultURL).then(function(line) {
     yaxis: 'y2',
     overlaying: 'y',
     line: {
-      color: "red",
+      color: "#9a031e",
       width: 5,
     }
   };

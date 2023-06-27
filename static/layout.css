@@ -8,12 +8,13 @@ C C    WW    W W    WW     I    LL      D  D   F        I    RR RR   E      SS  
 /*
 
 */
+@import url('https://fonts.googleapis.com/css2?family=Vast+Shadow&display=swap');
+
 body {
     margin: 0;
     padding: 0;
     /* background-color: #E7EFE9; */
-    background-color: #B5A4A0;
-    
+    background-color: #B5A4A0;  
 }
 
 .row {
@@ -81,9 +82,10 @@ html, body {
 }
 
 header {
-    background-color: #606c38;
+    /* background-color: #606c38; */
     color: #ffffff;
     margin: auto;
+    background-color: black;
     position: relative;
     display: grid;
     height: 30%;
@@ -94,9 +96,10 @@ header {
 }
 
 header::before {
-    opacity: .35;
+    /* opacity: .35; */
     content: "";
-    background-image: url('smokey_bear.jpeg');
+    /* background-image: url('smokey_bear.jpeg'); */
+    background-image: url('fires.png');
     background-size: cover;
     position: absolute;
     top: 0px;
@@ -106,12 +109,21 @@ header::before {
 }
 
 #header-text {
-    font-size: 3.8em;
+    font-size: 4.2em;
     position: relative;
     text-align: center;
-    color: white;
+    margin-bottom: 15%;
+    /* color: #9a031e; */
+    color: #FFFFFF;
+    font-family: 'Vast Shadow', Helvetica, sans-serif;
 }
+#jupyter-frame {
+    width: 94%;
+    border-radius: 25px;
 
+    margin-left: 3%;
+    /* margin-right: 3%; */
+}
 .grid-box {
     display: grid;
     grid-gap: 1vw;

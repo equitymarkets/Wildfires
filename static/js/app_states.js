@@ -9,7 +9,10 @@ d3.json(defaultURL2).then(function(bar) {
   let trace2 = {
     x: xvalues2,
     y: yvalues2,
-    type: 'bar'
+    type: 'bar',
+    marker: {
+      color: '#078B47'
+    }
     
   };
 
