@@ -96,6 +96,10 @@
 
   * It would be interesting to follow this data over the next several years to see how continued population increases in previously rural areas, changes in climate, and evolving fire management strategies will impact the size and number of fires we see as well as the toll they take on people.
 
+### After the project
+Some challenges after the initial project phase:
+* Getting all versions to run on the hosting server. One of the challenges to a new backend developer is taking all the work done on a locally-hosted machine and running it as a website or extension to another website. The first thing I had to do here was set up a Flask app inside of a new 'wildfires' folder and set up a route from the website's 'public_html' folder to the wildfires folder, in this case using the '.htaccess' file. Second, I had to create a 'requirements.txt' folder mentioning both the Flask version and the werkzeug version. Once the coding was up-to-date, I had to enable GCC with the hosting provider, then set up the correct versions of pandas, numpy, matplotlib, and plotly in the virtual environment. At this point, I had a working frontend but could not query the sqlite database.
+
 #### Resources
 
 <img width="100%" alt="Resources" src="https://user-images.githubusercontent.com/119986667/234646664-0f5c6e04-e334-4ce9-8001-0956e51cc235.png">
