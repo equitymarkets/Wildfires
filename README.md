@@ -2,8 +2,6 @@
 
 <img width="100%" alt="Wildfires!" src="https://user-images.githubusercontent.com/119274891/231022049-302a84df-2d5d-4e94-840b-5a9cc1c25437.png">
 
-<img width="100%" alt="Wildfires in the US header" src="https://user-images.githubusercontent.com/119986667/234643307-ed473ea7-cbdf-41a2-8ae0-e06bc5f1729d.png">
-
 ## Welcome! We've gathered data from Kaggle that includes 2.3 million fires in the country from 1992 to 2020. Continue scrolling for an in-depth study of whether or not fires have become larger or more widespread in the last 30 years.
 
 ## Want to run our app for yourself? Just clone the project and run app.py from the local directory. You will also need to paste the data.sqlite file available from the Kaggle wildfire dataset [here](https://www.kaggle.com/datasets/behroozsohrabi/us-wildfire-records-6th-edition).
