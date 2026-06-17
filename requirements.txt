@@ -1,0 +1,12 @@
+# Web framework
+Flask>=2.0
+
+# Data access.
+# pandas>=2.0 requires SQLAlchemy>=2.0 for read_sql(); an older SQLAlchemy
+# (1.4.x) makes pandas fall back to a raw-DBAPI path and raise
+# "'Connection' object has no attribute 'cursor'" -> 500 on every chart.
+pandas>=2.0
+SQLAlchemy>=2.0
+
+# Charting (figure JSON for the /size histogram)
+plotly>=5.0

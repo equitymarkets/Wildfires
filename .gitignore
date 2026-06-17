@@ -61,6 +61,11 @@ local_settings.py
 db.sqlite3
 db.sqlite3-journal
 
+# Project database: 1.1GB SQLite, exceeds GitHub's 100MB file limit.
+# Keep it out of git; indexes are rebuilt automatically by app.ensure_indexes().
+data.sqlite
+*.sqlite
+
 # Flask stuff:
 instance/
 .webassets-cache

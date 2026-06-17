@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<!-- index.html is the main page for our frontend and the page in which we display our data. Semantic elements
-have been used wherever possible.  -->
+
 <html lang="en">
 
   <head>
-    <!-- <head> defines our meta data and external CSS files  -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -15,6 +14,7 @@ have been used wherever possible.  -->
     integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
     crossorigin="" />
     <link rel="stylesheet" href="{{ url_for('static', filename='../static/layout.css') }}"> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='../static/lightbox.css') }}" type="text/css"/>
     <style>
       .navbar {
         z-index: 9999;
@@ -28,7 +28,6 @@ have been used wherever possible.  -->
   </head>
 
   <body>
-    <!-- <body> defines the part of our website that users see -->
     <header>
       <h1 id="header-text">Wildfires!</h1>
     </header> 
@@ -48,16 +47,24 @@ have been used wherever possible.  -->
       </ul>
     </nav>
 
+    <section class="row" id="hist">        
+      <div id="histogram"></div>
+
+    </section>
+
+
+
     <section class="row" id="barchart">        
       <figure id="bar"> </figure>
       <div class = "dropdown">
         <select id="selDataset2" onchange="getData2(this.value)">
+          <option value="acre">All Years</option>
           <option value="2020">2020</option>
           <option value="2019">2019</option>
           <option value="2018">2018</option>
           <option value="2017">2017</option>
           <option value="2016">2016</option>
-          <option value="acre">All Years</option>
+          
         </select>
       </div> 
       
@@ -67,6 +74,7 @@ have been used wherever possible.  -->
       <figure id="scatter"></figure>
       <div class = "dropdown">
         <select id="selDataset" onchange="getData(this.value)">
+          <option value="total">United States</option>
           <option value="ca">California</option>
           <option value="ak">Alaska</option>
           <option value="id">Idaho</option>
@@ -77,7 +85,7 @@ have been used wherever possible.  -->
           <option value="az">Arizona</option>
           <option value="nm">New Mexico</option>
           <option value="wa">Washington</option>
-          <option value="total">United States</option>
+          
         </select> 
       </div>
     </section> 
@@ -86,32 +94,38 @@ have been used wherever possible.  -->
       <figure id="pie"></figure>
       <div class = "dropdown">
         <select id="selDataset3" onchange="getData3(this.value)"> 
+          <option value="fire_cause">All Years</option>
           <option value="2020">2020</option>
           <option value="2019">2019</option>
           <option value="2018">2018</option>
           <option value="2017">2017</option>
           <option value="2016">2016</option>
           <option value="2015">2015</option>
-          <option value="fire_cause">All Years</option>
+          
         </select> 
       </div>
     </div>
 
     <br>
-  
-    <summary class="grid-box" id="gallery">
-      <img src="{{url_for('static', filename='fire_size_cause.png')}}" width="100%" height="100%">
-      <img src="{{url_for('static', filename='fire_count_cause.png')}}" width="100%" height="100%">
-      <img src="{{url_for('static', filename='fire_count.png')}}" width="100%" height="100%">
-      <img src="{{url_for('static', filename='sizes.png')}}" width="100%" height="100%">
-    </summary> 
+
+    <summary id="gallery">
+      <div  class="grid-box">
+        <a href="static/plot_1_size.png" data-lightbox="Fire_Data" data-title="Sizes"><img src="static/plot_1_size.png" alt="Fire Sizes" width="100%" height=100%></a>
+        <!-- <img src="{{url_for('static', filename='plot_1_size.png')}}" width="100%" height="100%"> -->
+        <a href="static/plot_2_cause.png" data-lightbox="Fire_Data" data-title="Causes"><img src="static/plot_2_cause.png" alt="Fire Causes" width="100%" height=100%></a>
+        <!-- <img src="{{url_for('static', filename='plot_2_cause.png')}}" width="100%" height="100%"> -->
+        <a href="static/plot_3_total.png" data-lightbox="Fire_Data" data-title="Totals"><img src="static/plot_3_total.png" alt="Fire Totals" width="100%" height=100%></a>
+        <!-- <img src="{{url_for('static', filename='plot_3_total.png')}}" width="100%" height="100%"> --> 
+        <a href="static/plot_4_bins.png" data-lightbox="Fire_Data" data-title="Bins"><img src="static/plot_4_bins.png" alt="Bins" width="100%" height=100%></a>
+        <!-- <img src="{{url_for('static', filename='plot_4_bins.png')}}" width="100%" height="100%"> -->
+        <a href="static/plot_5_elbow_.png" data-lightbox="Fire_Data" data-title="Elbow"><img src="static/plot_5_elbow_.png" alt="Elbow Curve" width="100%" height=100%></a>
+        <!-- <img src="{{url_for('static', filename='plot_5_elbow_.png')}}" width="100%" height="100%"> -->
+        <a href="static/plot_6_k_.png" data-lightbox="Fire_Data" data-title="Plot"><img src="static/plot_6_k_.png" alt="Fire Causes" width="100%" height=100%></a>
+        <!-- <img src="{{url_for('static', filename='plot_6_k_.png')}}" width="100%" height="100%"> -->
+      </div>
     <br>
 
-    <iframe id="jupyter-frame"
-      src="https://equitymarkets.github.io/notebook/lab/index.html"
-      width="100%"
-      height="500px">
-    </iframe>
+
 
     <br>
 
@@ -141,10 +155,18 @@ have been used wherever possible.  -->
         <li>
           <a href="https://wfca.com/articles/what-causes-wildfires/?gclid=CjwKCAjw0ZiiBhBKEiwA4PT9z8dFK3tNWDmkAs6JNVatK31HVNVUnE0RhSPb1d-GXy4Uw0Db4Q_O7xoCN0UQAvD_BwE">What Causes Wildfires?</a>
         </li>
+        <li>
+          <a href="https://www.geeksforgeeks.org/advantages-and-disadvantages-of-logistic-regression/">Logistic Regression</a>
+        </li>
+        <li>
+          <a href="https://developers.google.com/machine-learning/clustering/algorithm/advantages-disadvantages">K-Means</a>
+        </li>
+        <li>
+          <a href="https://www.ncei.noaa.gov/access/search/index">Weather Data</a>
+        </li>
       </ul>
     </footer>
     
-    <!-- Our Javascript files are used to make various chart and map data -->
     <script src="static/js/heatmap.js"></script>
 
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
@@ -154,12 +176,23 @@ have been used wherever possible.  -->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="static/js/leaflet-heatmap.js"></script>
     
-    <script src="static/js/pop_dense_data.js"></script>
+    <!-- <script src="static/js/pop_dense_data.js"></script>
     <script src="static/js/pop_dense_chg_chloro.js"></script>
     <script src="static/js/app_heat.js"></script>
     <script src="static/js/app_years.js"></script>
     <script src="static/js/app_states.js"></script>
+    <script src="static/js/app_cause.js"></script> -->
+
+    <!-- Size histogram: older work, kept commented for future use (see /size in app.py) -->
+    <!-- <script src="static/js/app_size.js"></script> -->
+    <script src="static/js/app_states.js"></script>
+    <script src="static/js/app_years.js"></script>
     <script src="static/js/app_cause.js"></script>
+    <script src="static/js/app_heat.js"></script>
+    <script src="static/js/pop_dense_chg_chloro.js"></script>
+    <script src="static/js/pop_dense_data.js"></script>
+    <script src="static/js/lightbox-plus-jquery.js"></script>
+    <!-- <script src="{{ url_for('static', filename='js/app_heat.js', _external=True) }}"></script> -->
     <script>
       window.onscroll = function() {stickyNavbar()};
       var navbar = document.getElementById("top-nav");
@@ -171,6 +204,7 @@ have been used wherever possible.  -->
         navbar.classList.remove("sticky");
         }
       }
+
     </script>
   </body>
 
